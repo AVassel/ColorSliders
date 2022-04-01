@@ -24,30 +24,37 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         canvasView.layer.cornerRadius = 25
         
-        //Label setup
-        redValueLabel.text = String(format: "%.2f", redSlider.value)
-        greenValueLabel.text = String(format: "%.2f", greenSlider.value)
-        blueValueLabel.text = String(format: "%.2f", blueSlider.value)
+        redValueLabel.text = string(for: redSlider)
+        greenValueLabel.text = string(for: greenSlider)
+        blueValueLabel.text = string(for: blueSlider)
         
         paintCanvas()
     }
 
     @IBAction func redColorAction() {
-        redValueLabel.text = String(format: "%.2f", redSlider.value)
+        redValueLabel.text = string(for: redSlider)
         paintCanvas()
     }
 
     @IBAction func greenColorAction() {
-        greenValueLabel.text = String(format: "%.2f", greenSlider.value)
+        greenValueLabel.text = string(for: greenSlider)
         paintCanvas()
     }
     
     @IBAction func blueColorAction() {
-        blueValueLabel.text = String(format: "%.2f", blueSlider.value)
+        blueValueLabel.text = string(for: blueSlider)
         paintCanvas()
     }
     private func paintCanvas() {
-        canvasView.backgroundColor = UIColor(red: CGFloat(redSlider.value), green: CGFloat(greenSlider.value), blue: CGFloat(blueSlider.value), alpha: 1)
+        canvasView.backgroundColor = UIColor(
+            red: CGFloat(redSlider.value),
+            green: CGFloat(greenSlider.value),
+            blue: CGFloat(blueSlider.value),
+            alpha: 1)
+    }
+    
+    private func string(for slider:UISlider) -> String {
+        String(format: "%.2f", slider.value)
     }
 }
 
